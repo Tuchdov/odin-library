@@ -12,12 +12,7 @@ function Book(title,author,pages,isRead) {
 
 };
 
-function addBookToLibrary(title,author,pages,isRead) {
-  // take params, create a book, then store it in the array
-  let newBook = new Book(title,author,pages,isRead);
-  myLibrary.push(newBook);
-  displayBooks();
-};
+
 
 // addBookToLibrary('The Hobbit' ,'J.R.R. Tolkien', 295, false );
 // console.log(myLibrary);
@@ -44,10 +39,49 @@ const displayBooks = () => {
         bookDiv.appendChild(title);
         bookDiv.appendChild(author);
         bookContainer.appendChild(bookDiv);
-       
+
+        let btnDelete = document.createElement('button');
+        btnDelete.textContent = 'Delete';
+        bookDiv.appendChild(btnDelete);
     });
 }
 
+function addBookToLibrary(title,author,pages,isRead) {
+  // take params, create a book, then store it in the array
+  let newBook = new Book(title,author,pages,isRead);
+  myLibrary.push(newBook);
+  displayBooks();
+};
+
 // addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, false);
 
-// 
+// add form and button finctionality
+
+let btnAddBook = document.querySelector('#new-book-btn');
+let dialog = document.querySelector('#dialog');
+
+btnAddBook.addEventListener('click', ()=>{
+    dialog.showModal();
+})
+
+let formBook = document.querySelector('#new-book-form');
+let title = document.querySelector('#title');
+let author = document.querySelector('#author');
+let isRead = document.querySelector('#isRead');
+let pages = document.querySelector('#pages');
+formBook.addEventListener('submit', (event) => {
+    // stop page from reloading
+    event.preventDefault();
+
+    // get the form data
+    let titleValue =  title.value ;
+    let authorValue = author.value;
+    let isReadValue = isRead.checked;
+    let pagesValue = pages.value;
+
+    // add new book to library
+    addBookToLibrary(titleValue,authorValue,pagesValue,isReadValue);
+    // reset the form and close the dialog
+    formBook.reset();
+    dialog.close();
+});

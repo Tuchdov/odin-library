@@ -8,23 +8,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="book-container"></div>
+    <div class="book-container">
     <button type="button" id="new-book-btn">Add a new book</button>
-    <form action="" method="post" id ="new-book-form">
-        <label for="author">Author</label>
-        <input type="text" id="author" name="author">
-        <label for="title">Title</label>
-        <input type="text" id="title" name="title" required>
-        <label for="pages"  >Number of Pages</label>
-        <div id="checkbox">
-            <input type="number" maxlength="4" id="pages" name="pages">
-            <label for="isRead">read</label>
-            <input type="checkbox"   id="Read" name="isRead">
-            <label for="isRead">to read</label>
-            <input type="checkbox"   id="isRead" name="isRead">
-        </div>
-        <button type="submit">Add to library</button>
-    </form>
+    <dialog id ="dialog">
+        <form action="" method="dialog" id ="new-book-form">
+            <label for="author">Author</label>
+            <input type="text" id="author" name="author">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" required>
+            <label for="pages"  >Number of Pages</label>
+            <div id="checkbox">
+                <input type="number" maxlength="4" id="pages" name="pages">
+                <label for="isRead">read</label>
+                <input type="checkbox"   id="Read" name="isRead">
+                <label for="isRead">to read</label>
+                <input type="checkbox"   id="isRead" name="isRead">
+            </div>
+            <button type="submit" id="submit-button">Add to library</button>
+        </form>
+    </dialog>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
