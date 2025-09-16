@@ -1,18 +1,20 @@
 let myLibrary = [];
 
-function Book(title,author,pages,isRead) {
+function Book(title,author,isRead) {
     if (!new.target) {
         throw Error("You must use the 'new' operator to call the constructor");
     }
     this.id  = this.id = Date.now().toString() + Math.random().toString(36).slice(2);
     this.title = title;
     this.author = author;
-    this.pages = pages;
     this.isRead = isRead;
 
 };
 
-
+Book.prototype.toggleReadStatus = function() {
+    // toggle from reading status to true to false and vice versa
+    this.isRead = !this.isRead
+}
 
 // addBookToLibrary('The Hobbit' ,'J.R.R. Tolkien', 295, false );
 // console.log(myLibrary);
@@ -39,6 +41,10 @@ const displayBooks = () => {
         bookDiv.appendChild(title);
         bookDiv.appendChild(author);
         bookContainer.appendChild(bookDiv);
+
+        let btnRead = document.createElement('button');
+        btnRead.classList.add('toggle-read-btn');
+        bookDiv.appendChild(btnRead);
 
         let btnDelete = document.createElement('button');
         btnDelete.classList.add('delete-button');
@@ -69,7 +75,6 @@ let formBook = document.querySelector('#new-book-form');
 let title = document.querySelector('#title');
 let author = document.querySelector('#author');
 let isRead = document.querySelector('#isRead');
-let pages = document.querySelector('#pages');
 formBook.addEventListener('submit', (event) => {
     // stop page from reloading
     event.preventDefault();
@@ -78,10 +83,10 @@ formBook.addEventListener('submit', (event) => {
     let titleValue =  title.value ;
     let authorValue = author.value;
     let isReadValue = isRead.checked;
-    let pagesValue = pages.value;
+
 
     // add new book to library
-    addBookToLibrary(titleValue,authorValue,pagesValue,isReadValue);
+    addBookToLibrary(titleValue,authorValue,isReadValue);
     // reset the form and close the dialog
     formBook.reset();
     dialog.close();
@@ -103,6 +108,13 @@ bookContainer.addEventListener('click', (e) => {
         const idToDelete = parent.getAttribute('data-book-id');
         myLibrary = myLibrary.filter((book) => book.id !== idToDelete);
         // delete the bookdiv with this attribute
+        displayBooks();
+    }
+    else if (e.target.classList.contains('toggle-read-btn')){
+        const perent = e.target.parentElement;
+        const idToToggle  = perent.getAttribute('data-book-id');
+        relevantBook =  myLibrary.find((book) => book.id === idToToggle);
+        relevantBook.toggleReadStatus();
         displayBooks();
     }
 
