@@ -90,24 +90,22 @@ formBook.addEventListener('submit', (event) => {
 // I need to create a thing that when you click it. this will delete a book from the library
 // Inside the book there will be a buttom that deletes the book when clicked.
 // plan: create a button in the book that has an event listener that on click removes the book with the relevant item id from the query.
-btnDelete.addEventListener('click',(e)=>{
-    const parent = e.target.parentElement;
-    const idToDelete = parent.getAttribute('data-book-id');
-    myLibrary = myLibrary.filter( (book) => book.id !== idToDelete);
-    // delete the bookdiv with this attribute
-    displayBooks();
-} );
+
 
 // This listener goes on the main container for all the books
 bookContainer.addEventListener('click', (e) => {
     // We'll put our logic in here
         
     if (e.target.classList.contains('delete-button')){
+        let userConfirmed = confirm('This will permanetely delete the book from the library. Are you sure?')
+        if (userConfirmed){        
         const parent = e.target.parentElement;
         const idToDelete = parent.getAttribute('data-book-id');
         myLibrary = myLibrary.filter((book) => book.id !== idToDelete);
         // delete the bookdiv with this attribute
         displayBooks();
+    }
+
 
     };
 });

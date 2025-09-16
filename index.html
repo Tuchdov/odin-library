@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <div class="book-container">
+    </div>
     <button type="button" id="new-book-btn">Add a new book</button>
-    <dialog id ="dialog">
+        <dialog id ="dialog">
         <form action="" method="dialog" id ="new-book-form">
             <label for="author">Author</label>
             <input type="text" id="author" name="author">
@@ -20,14 +22,11 @@
             <div id="checkbox">
                 <input type="number" maxlength="4" id="pages" name="pages">
                 <label for="isRead">read</label>
-                <input type="checkbox"   id="Read" name="isRead">
-                <label for="isRead">to read</label>
                 <input type="checkbox"   id="isRead" name="isRead">
             </div>
             <button type="submit" id="submit-button">Add to library</button>
         </form>
     </dialog>
-    </div>
     <script src="script.js"></script>
 </body>
 </html>
