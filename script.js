@@ -21,11 +21,34 @@ Book.prototype.toggleReadStatus = function() {
 
 const bookContainer = document.querySelector('.book-container');
 
+// Update stats function
+const updateStats = () => {
+    const totalBooks = myLibrary.length;
+    const readBooks = myLibrary.filter(book => book.isRead).length;
+    const unreadBooks = totalBooks - readBooks;
+    
+    document.getElementById('total-books').textContent = totalBooks;
+    document.getElementById('read-books').textContent = readBooks;
+    document.getElementById('unread-books').textContent = unreadBooks;
+};
+
 
 // This function displays all books in our array on the page
 const displayBooks = () => {
     // 1. Clear the container first
     bookContainer.innerHTML ='';
+    // 2. I empty add this html
+                if (myLibrary.length === 0) {
+                bookContainer.innerHTML = `
+                    <div class="empty-state fade-in" style="grid-column: 1 / -1;">
+                        <i class="fas fa-book-open"></i>
+                        <h3>Your library is empty</h3>
+                        <p>Start building your personal library by adding your first book. Click the "Add New Book" button to get started!</p>
+                    </div>
+                `;
+                updateStats();
+                return;
+            }
     // 2. Loop over the library and create a card for each book
     myLibrary.forEach((book) => {
         let bookDiv = document.createElement('div');
@@ -53,9 +76,9 @@ const displayBooks = () => {
     });
 }
 
-function addBookToLibrary(title,author,pages,isRead) {
+function addBookToLibrary(title,author,isRead) {
   // take params, create a book, then store it in the array
-  let newBook = new Book(title,author,pages,isRead);
+  let newBook = new Book(title,author,isRead);
   myLibrary.push(newBook);
   displayBooks();
 };
@@ -92,9 +115,6 @@ formBook.addEventListener('submit', (event) => {
     dialog.close();
 });
 
-// I need to create a thing that when you click it. this will delete a book from the library
-// Inside the book there will be a buttom that deletes the book when clicked.
-// plan: create a button in the book that has an event listener that on click removes the book with the relevant item id from the query.
 
 
 // This listener goes on the main container for all the books
