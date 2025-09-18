@@ -5,27 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div class="book-container">
-    </div>
-    <button type="button" id="new-book-btn">Add a new book</button>
-        <dialog id ="dialog">
-        <form action="" method="dialog" id ="new-book-form">
-            <label for="author">Author</label>
-            <input type="text" id="author" name="author">
-            <label for="title">Title</label>
-            <input type="text" id="title" name="title" required>
-            <div id="checkbox">
-                <label for="isRead">read</label>
-                <input type="checkbox"   id="isRead" name="isRead">
+<!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1>
+                <i class="fas fa-book icon"></i>
+                Dov's Personal Library
+            </h1>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="total-books">0</span>
+                    <span>Total Books</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="read-books">0</span>
+                    <span>Read</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="unread-books">0</span>
+                    <span>To Read</span>
+                </div>
             </div>
-            <button type="submit" id="submit-button">Add to library</button>
-        </form>
+        </div>
+    </header>
+    <main class="main-container">
+
+        <!-- Add Book Button -->
+        <button type="button" id="new-book-btn">
+            <i class="fas fa-plus"></i>
+            Add a new book
+        </button>
+        <!-- Books Container -->
+                <section class="book-container" id="book-container">
+                    <!-- Books will be added here -->
+                </section>
+    </main>
+<!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-text">Proudly made by Dov Tuch</div>
+            <div class="social-links">
+                <a href="https://github.com/dovtuch" class="social-link github" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://linkedin.com/in/dovtuch" class="social-link linkedin" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+<!-- Add Book Dialog -->
+        <dialog id ="dialog">
+            <div class="dialog-header">
+                <h2>Add New Book</h2>
+            </div>
+            
+        <div class="dialog-content">
+            <form action="" method="dialog" id ="new-book-form">
+                        <div class="form-group">
+                                <label for="title">Book Title*</label>
+                                <input type="text" id="title" name="title" placeholder="Enter book title" required>
+                        </div>
+                <div class="form-group">
+                    <label for="author">Author*</label>
+                    <input type="text" id="author" name="author" required placeholder="Enter author name" required>
+                </div>
+
+                <div class="checkbox-group">
+                    <div id="checkbox-item">
+                        <label for="isRead">I have read this book</label>
+                        <input type="checkbox"   id="isRead" name="isRead">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" id="submit-button">Add to library</button>
+                    <button type ="button" class="cancel-button">Cancel</button>
+                </div>
+            </form>
+        </div>
     </dialog>
     <script src="script.js"></script>
 </body>
-<footer>Proudly made by Dov Tuch</footer>
+
 </html>
