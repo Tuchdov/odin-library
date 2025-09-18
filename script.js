@@ -73,6 +73,7 @@ const displayBooks = () => {
         btnDelete.classList.add('delete-button');
         btnDelete.textContent = 'Delete';
         bookDiv.appendChild(btnDelete);
+
     });
 }
 
@@ -81,6 +82,7 @@ function addBookToLibrary(title,author,isRead) {
   let newBook = new Book(title,author,isRead);
   myLibrary.push(newBook);
   displayBooks();
+  updateStats();
 };
 
 // addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, false);
