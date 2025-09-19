@@ -91,9 +91,14 @@ function addBookToLibrary(title,author,isRead) {
 
 let btnAddBook = document.querySelector('#new-book-btn');
 let dialog = document.querySelector('#dialog');
+let btnCancelForm = document.querySelector('#cancel-button');
 
 btnAddBook.addEventListener('click', ()=>{
     dialog.showModal();
+})
+
+btnCancelForm.addEventListener('click', () => {
+    dialog.close();
 })
 
 let formBook = document.querySelector('#new-book-form');
@@ -121,7 +126,6 @@ formBook.addEventListener('submit', (event) => {
 
 // This listener goes on the main container for all the books
 bookContainer.addEventListener('click', (e) => {
-    // We'll put our logic in here
         
     if (e.target.classList.contains('delete-button')){
         let userConfirmed = confirm('This will permanetely delete the book from the library. Are you sure?')
@@ -143,3 +147,6 @@ bookContainer.addEventListener('click', (e) => {
 
     };
 });
+
+ // Initialize the display
+displayBooks();
