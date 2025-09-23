@@ -121,6 +121,27 @@
             align-items: center;
             gap: 0.5rem;
             box-shadow: var(--shadow-md);
+
+
+                /* Default size for mobile */
+            width: 13rem;
+            height: 13rem;
+            font-size: 4rem; /* Adjust icon size to fit the larger button */
+            position: fixed;
+            bottom: 13.5rem;    /* Distance from the bottom of the window */
+            right: 1.5rem;     /* Distance from the right of the window */
+            z-index: 1000;   /* Ensures the button stays on top of other content */
+
+                /* ADJUST FOR A CIRCULAR SHAPE 👇 */
+            width: 60px;
+            height: 60px;
+            border-radius: 50%; /* This is what creates the circle */
+            padding: 0;         /* Remove the old padding */
+            justify-content: center; /* Center the icon inside the circle */
+
+            /* Optionally, hide the text and make the icon bigger */
+            font-size: 1.5rem; /* Makes the '+' icon larger */
+            
         }
 
         #new-book-btn:hover {
@@ -253,6 +274,7 @@
             display: flex;
             align-items: center;
             gap: 0.375rem;
+            justify-content: center; /* Center the icon inside the circle */
         }
 
         .delete-button:hover {
@@ -601,3 +623,16 @@
                 transform: translateY(0);
             }
         }
+
+        /* Media Query for desktops and larger screens */
+@media (min-width: 768px) {
+    #new-book-btn {
+        /* Overrides for "online view" */
+        
+        
+        bottom: 11rem;  
+        width: 10rem;
+        height: 10rem;
+        font-size: 3rem; /* Adjust icon size for the smaller button */
+    }
+}
