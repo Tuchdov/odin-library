@@ -629,7 +629,7 @@
     #new-book-btn {
         /* Overrides for "online view" */
         
-        
+        right: 2rem;
         bottom: 11rem;  
         width: 10rem;
         height: 10rem;
