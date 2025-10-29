@@ -1,20 +1,18 @@
 let myLibrary = [];
 
-function Book(title,author,isRead) {
-    if (!new.target) {
-        throw Error("You must use the 'new' operator to call the constructor");
+class Book {
+    constructor(title,author,isRead){
+        this.title = title;
+        this.author = author;
+        this.isRead = isRead;
+        this.id  = Date.now().toString() + Math.random().toString(36).slice(2);
     }
-    this.id  = this.id = Date.now().toString() + Math.random().toString(36).slice(2);
-    this.title = title;
-    this.author = author;
-    this.isRead = isRead;
-
-};
-
-Book.prototype.toggleReadStatus = function() {
-    // toggle from reading status to true to false and vice versa
-    this.isRead = !this.isRead
+    toggleReadStatus(){
+         // toggle from reading status to true to false and vice versa
+        this.isRead = !this.isRead;
+    }
 }
+
 
 // addBookToLibrary('The Hobbit' ,'J.R.R. Tolkien', 295, false );
 // console.log(myLibrary);
